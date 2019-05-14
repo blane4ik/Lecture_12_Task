@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Задача 1</title>
+</head>
+<body>
+	<h1>2. Выборка элементов коллекции</h1>
+	<pre>
+&quot;Коллекция&quot;
+В этой задаче необходимо реализовать конструктор для создания коллекции
+элементов.
+var numbers = new Collection();
+numbers.append(10);
+numbers.append(20);
+numbers.at(2); // 20
+numbers.values(); // [10, 20]
+numbers.count(); // 2
+numbers.removeAt(1); // 10
+<b>Условия</b>
+Создание коллекции
+Коллекцию можно создать двумя способами: через конструктор Collection
+или через метод Collection.from().
+Через конструктор создается пустая коллекция.
+var collection = new Collection();
+collection.count(); //0
+Через метод Collection.from() можно создать коллекцию с начальными
+значениями, передав в нее массив элементов. Возвращается экземпляр
+конструктора Collection.
+var letters = Collections.from([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
+letters.count(); //3
+letters instanceof Collection //true
+<b>Метод values</b>
+Метод возвращает массив элементов коллекции.
+var names = Collection.from(&#39;Ivan&#39;, &#39;Petr&#39;);
+names.values(); //[&#39;Ivan&#39;, &#39;Petr&#39;]
+<b>Метод at</b>
+Метод возвращает элемент с определенной позиции (нумерация начинается с
+единицы, а не нуля). Если позиция не существует, возвращается null.
+var letters = Collections.from([&#39;a&#39;, &#39;b&#39;]);
+letters.at(0); // null
+letters.at(1); // &#39;a&#39;
+letters.at(2); // &#39;b&#39;
+letters.at(3); // null
+<b>Метод append</b>
+Метод добавляет элемент в коллекцию.
+var letters = Collections.from([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
+
+letters.append(&#39;d&#39;);
+letters.values(); // [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+Если в метод append передана другая коллекция, то все её элементы
+добавляются в текущую.
+var letters1 = Collections.from([&#39;a&#39;]);
+var letters2 = Collections.from([&#39;b&#39;, &#39;c&#39;]);
+letters1.append(letters2);
+letters1.values(); // [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+letters2.values(); // [&#39;b&#39;, &#39;c&#39;]
+letters1.at(3); // &#39;c&#39;
+letters1.count(); // 3
+<b>Метод removeAt</b>
+Метод удаляет элемент с переданной позиции (нумерация начинается с
+единицы) и в случае успеха возвращает true. Если элемента на переданной
+позиции не существует, то метод возвращает false.
+var numbers = Collection.from([10, 20, 30]);
+numbers.removeAt(0); // false
+numbers.values(); // [10, 20, 30]
+numbers.removeAt(2); // true
+numbers.count(); // 2
+numbers.values(); // [10, 30]
+<b>Метод count</b>
+Метод возвращает количество элементов в коллекции
+var numbers = Collection.from([10, 20, 30]);
+numbers.count(); // 3
+Гарантируется корректное использование методов.
+Ожидается, что все методы (кроме from) будут объявлены в
+Collection.prototype.
+Проверку добавляемого элемента в методе append можно сделать через
+instanceof.
+	</pre>	
+	<script src="script/Task1.js"></script>
+</body>
+</html>
